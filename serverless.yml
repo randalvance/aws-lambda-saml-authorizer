@@ -1,0 +1,19 @@
+service: aws-lambda-saml-authorizer
+
+provider:
+  name: aws
+  runtime: nodejs12.x
+  region: ap-southeast-1
+
+package:
+  include:
+    - node_modules/**
+
+functions:
+  postSaml:
+    handler: postSaml.handler
+    events:
+      - http:
+          method: post
+          path: saml
+          cors: true
