@@ -11,5 +11,8 @@
   "dependencies": {
     "aws-sdk": "^2.589.0",
     "xml2js": "^0.4.22"
+  },
+  "devDependencies": {
+    "serverless-dotenv-plugin": "^2.1.1"
   }
 }
