@@ -14,14 +14,14 @@ package:
 
 functions:
   resource:
-    handler: resource.handler
+    handler: functions/resource.handler
     events:
       - http:
           method: get
           path: resource
           cors: true
   postSaml:
-    handler: postSaml.handler
+    handler: functions/postSaml.handler
     events:
       - http:
           method: post
