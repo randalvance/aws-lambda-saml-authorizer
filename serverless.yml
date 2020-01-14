@@ -13,6 +13,13 @@ package:
     - node_modules/**
 
 functions:
+  resource:
+    handler: resource.handler
+    events:
+      - http:
+          method: get
+          path: resource
+          cors: true
   postSaml:
     handler: postSaml.handler
     events:
