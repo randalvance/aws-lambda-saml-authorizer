@@ -1,10 +1,8 @@
 'use strict';
 
-module.exports.handler = async (event, context) => {
-    return {
+module.exports.handler = (event, context, callback) => {
+    callback(null, {
         statusCode: 200,
-        body: JSON.stringify({
-            message: 'This resource is secured!',
-        }),
-    };
+        body: JSON.stringify(event.requestContext.authorizer),
+    });
 };

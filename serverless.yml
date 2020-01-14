@@ -20,6 +20,11 @@ functions:
           method: get
           path: resource
           cors: true
+          authorizer:
+            name: auth
+            resultTtlInSeconds: 300
+            identitySource: method.request.header.Authorization
+            type: token
   postSaml:
     handler: functions/postSaml.handler
     events:
@@ -27,3 +32,5 @@ functions:
           method: post
           path: saml
           cors: true
+  auth:
+    handler: functions/authorizer.handler
