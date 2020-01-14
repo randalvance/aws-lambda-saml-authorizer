@@ -2,16 +2,15 @@
 
 const jwt = require('jsonwebtoken');
 
-const generatePolicy = (resource, token) => {
-    const decoded = jwt.decode(token);
-    console.log('JWT Decoded = ' + decoded);
+const generatePolicy = (effect, resource, token) => {
+    const decoded = token && jwt.decode(token);
     return ({
-        principalId: decoded.userName,
+        principalId: decoded ? decoded.userName : 'unauthorized-user',
         policyDocument: {
             Version: '2012-10-17',
             Statement: [
                 {
-                    Effect: 'Allow',
+                    Effect: effect,
                     Action: 'execute-api:Invoke',
                     Resource: resource,
                 },
@@ -24,14 +23,14 @@ const generatePolicy = (resource, token) => {
 module.exports.handler = (event, context, callback) => {
     const authHeader = event.authorizationToken;
     if (!authHeader) {
-        callback('Unauthorized.');
+        return callback(null, generatePolicy('Deny', event.methodArn, token));
     }
     const token = authHeader.split(' ')[1];
     try {
         jwt.verify(token, 'test');
     } catch(error) {
         console.error(error);
-        callback('Unauthorized.');
+        return callback(null, generatePolicy('Deny', event.methodArn, token));
     }
-    return callback(null, generatePolicy(event.methodArn, token));
+    return callback(null, generatePolicy('Allow', event.methodArn, token));
 };
