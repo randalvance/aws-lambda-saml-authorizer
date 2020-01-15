@@ -6,7 +6,7 @@ export const AuthPage = () => {
     return (
         <>
             <h1>Auth Page</h1>
-            <p>{query.token}</p>
+            <p>{decodeURIComponent(query.token)}</p>
         </>
     )
 };
