@@ -32,5 +32,12 @@ functions:
           method: post
           path: saml
           cors: true
+  login:
+    handler: functions/login.handler
+    events:
+      - http:
+          method: get
+          path: login
+          cors: true
   auth:
-    handler: functions/authorizer.handler
+    handler: functions/login.handler
