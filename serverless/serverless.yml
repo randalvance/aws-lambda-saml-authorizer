@@ -40,4 +40,4 @@ functions:
           path: login
           cors: true
   auth:
-    handler: functions/login.handler
+    handler: functions/authorizer.handler
