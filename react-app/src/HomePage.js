@@ -1,6 +1,6 @@
 import React, { useCallback } from 'react';
-
 import config from './config';
+import { isAuthenticated } from './Auth';
 
 export const HomePage = () => {
 
@@ -16,7 +16,11 @@ export const HomePage = () => {
   return (
     <>
         <h1>AWS SAML Integration</h1>
-        <button className="btn-login" onClick={handleLoginButtonClick}>Login</button>
+        {isAuthenticated() ? (
+            <h1>Welcome</h1>
+        ) : ( 
+            <button className="btn-login" onClick={handleLoginButtonClick}>Login</button>
+        )}
     </>
   );
 }
