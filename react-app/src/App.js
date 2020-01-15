@@ -1,24 +1,21 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useCallback } from 'react';
+
+import config from './config';
+
 import './App.css';
 
 function App() {
+  const handleLoginButtonClick = useCallback(() => {
+    if (!config.loginUrl) {
+      alert('Login URL was not configured!');
+    }
+    // Redirect to LOGIN URL
+    window.location.href = config.loginUrl;
+  }, []);
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>AWS SAML Integration</h1>
+      <button className="btn-login" onClick={handleLoginButtonClick}>Login</button>
     </div>
   );
 }
