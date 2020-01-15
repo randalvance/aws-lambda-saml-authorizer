@@ -38,7 +38,7 @@ export const HomePage = () => {
             <h1>AWS Lambda SAML Authentication</h1>
             {!isError && auth.isAuthenticated() ? (
                 <>
-                    <h1>{isLoading ? 'Loading User Data...' : `Welcome, ${userInfo.displayName}`}</h1>
+                    <h1>{isLoading ? 'Loading User Data...' : `Welcome, ${userInfo.userName}!`}</h1>
                     <button className="btn-login" onClick={handleLogoutButtonClick}>Logout</button>
                 </>
             ) : (
