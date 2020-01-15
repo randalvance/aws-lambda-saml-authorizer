@@ -2,7 +2,9 @@
 const { SAML } = require('passport-saml/lib/passport-saml/saml');
 
 const createRequest = event => ({
-    query: event.queryStringParameters,
+    query: {
+        RelayState: event.queryStringParameters.returnUrl,
+    },
 });
 
 module.exports.handler = (event, context, callback) => {
