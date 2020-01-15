@@ -9,6 +9,10 @@ export const login = () => {
     window.location.href = `${config.loginUrl}?returnUrl=${returnUrl}`;
 };
 
+export const logout = () => {
+    window.sessionStorage.removeItem('jwt');
+};
+
 export const setToken = (token) => {
     window.sessionStorage.setItem('jwt', token);
 }
