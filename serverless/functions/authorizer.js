@@ -27,7 +27,7 @@ module.exports.handler = (event, context, callback) => {
     }
     const token = authHeader.split(' ')[1];
     try {
-        jwt.verify(token, 'test');
+        jwt.verify(token, process.env.JWT_SECRET);
     } catch(error) {
         console.error(error);
         return callback(null, generatePolicy('Deny', event.methodArn, token));

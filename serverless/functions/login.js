@@ -13,11 +13,9 @@ module.exports.handler = (event, context, callback) => {
     const samlParser = new SAML({
         entryPoint: process.env.SAML_IDP_URL,
         callbackUrl: process.env.SAML_CALLBACK_URL,
-        cer: process.env.SAML_IDP_CERT,
         issuer: event.headers.Host + event.requestContext.path,
         audience: process.env.SAML_CALLBACK_URL,
         providerName: 'AWS SAML Lambda Example',
-        signatureAlgorithm: 'sha256'
     });
     samlParser.getAuthorizeUrl(createRequest(event), {}, (error, url) => {
         if (error) {

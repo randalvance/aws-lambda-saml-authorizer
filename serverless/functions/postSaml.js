@@ -25,7 +25,11 @@ const extractUserInfo = samlObject => {
   const email = getAttributeValue('http://schemas.auth0.com/email', attributes);
   const userName = getAttributeValue('http://schemas.auth0.com/username', attributes);
   const displayName = getAttributeValue('http://schemas.auth0.com/name', attributes);
-  const role = getAttributeValue('https://aws.amazon.com/SAML/Attributes/Role', attributes);
+  
+  // const roleFromSAML = getAttributeValue('https://aws.amazon.com/SAML/Attributes/Role', attributes);
+
+  // Here we can have the logic on determining the role
+  const role = 'User';
 
   return {
     email,
@@ -53,7 +57,7 @@ module.exports.handler = async (event, context) => {
 
     const userInfo = extractUserInfo(samlObject);
 
-    const token = jwt.sign(userInfo, 'test', {
+    const token = jwt.sign(userInfo, process.env.JWT_SECRET, {
       expiresIn: 60 // 30 seconds
     });
 
