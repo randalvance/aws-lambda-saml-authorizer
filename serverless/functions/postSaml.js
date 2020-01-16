@@ -58,7 +58,7 @@ module.exports.handler = async (event, context) => {
     const userInfo = extractUserInfo(samlObject);
 
     const token = jwt.sign(userInfo, process.env.JWT_SECRET, {
-      expiresIn: 60 // 30 seconds
+      expiresIn: parseInt(process.env.JWT_EXPIRATION_SECONDS),
     });
 
     return {
