@@ -4,6 +4,7 @@
 
 You will need to create a `.env` file prior to building and deploying the application.
 These are the variables that this project requires:
+
 |Name|Description|
 |----|-----------|
 |`REACT_APP_LOGIN_URL`|The URL of the login lambda function.|
