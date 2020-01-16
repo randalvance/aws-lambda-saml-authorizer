@@ -6,6 +6,7 @@ This project uses the Serverless Framework to deploy the lamba functions.
 
 You will need to create a `.env` file prior to deploying the application to AWS.
 These are the variables that this project requires:
+
 |Name|Description|
 |----|-----------|
 |`IDENTITY_PROVIDER_ARN`|The full ARN of the registered SAML-based identity provider in AWS IAM.|
