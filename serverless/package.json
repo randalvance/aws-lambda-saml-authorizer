@@ -9,7 +9,7 @@
   "license": "ISC",
   "dependencies": {
     "aws-sdk": "^2.589.0",
-    "jsonwebtoken": "^8.5.1",
+    "jsonwebtoken": "^9.0.0",
     "passport-saml": "^1.2.0",
     "xml2js": "^0.4.22"
   },
